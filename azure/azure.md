@@ -12,7 +12,7 @@ Learn how to create an [Apache Spark](hdinsight-apache-spark-overview.md) cluste
 
 In this section, you create an HDInsight Spark cluster using an [Azure Resource Manager template](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/). For other cluster creation methods, see [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md).
 
-1. Click the following image to open the template in the Azure portal.         
+1. Click the following image to open the template in the Azure portal.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json" target="_blank"><img src="deploy-to-azure.png" alt="Deploy to Azure"></a>
 
@@ -63,7 +63,7 @@ In this course, you'll use the **PySpark3** kernel in the notebook from where yo
    >** Info ** You may also access the Jupyter notebook for your cluster by opening the following URL in your browser. Replace **CLUSTERNAME** with the name of your cluster:
    `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. Create a notebook. Click **New**, and then click **PySpark**.
+3. Create a notebook. Click **New**, and then click **PySpark3**.
 
    ![Create a Jupyter notebook to run interactive Spark SQL query](hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Create a Jupyter notebook to run interactive Spark SQL query")
 
@@ -75,7 +75,7 @@ In this course, you'll use the **PySpark3** kernel in the notebook from where yo
 
 5. Paste the following code in an empty cell, and then press **SHIFT + ENTER** to run the code. The code imports the types required for this scenario:
 
-		`from pyspark.sql.types import *`
+		from pyspark.sql.types import *
 
     Because you created a notebook using the PySpark kernel, you do not need to create any contexts explicitly. The Spark and Hive contexts are automatically created for you when you run the first code cell.
 

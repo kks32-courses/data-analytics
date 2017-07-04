@@ -1,4 +1,5 @@
 # Summary
 
+* [Azure HDInsight](azure/azure.md)
 * [Spark](spark/spark.md)
-  * [Azure HDInsight](spark/azure/azure.md)
+  * [RDD](spark/rdd/rdd.md)
