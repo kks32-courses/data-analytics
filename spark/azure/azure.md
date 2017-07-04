@@ -24,7 +24,7 @@ In this section, you create an HDInsight Spark cluster using an [Azure Resource 
 	* **Resource group**: Create a resource group or select an existing one. Resource group is used to manage Azure resources for your projects.
 	* **Location**: Select a location for the resource group.  This location is also used for the default cluster storage and the HDInsight cluster.
 	* **ClusterName**: Enter a name for the Hadoop cluster that you create.
-	* **Spark version**: Select the Spark version that you want to install on the cluster.
+	* **Spark version**: Select the Spark version that you want to install on the cluster (v2.0)
 	* **Cluster login name and password**: The default login name is admin.
 	* **SSH user name and password**.
 
@@ -42,7 +42,7 @@ In this section, you use Jupyter notebook to run interactive Spark SQL queries a
 * **PySpark3** (for applications written in Python3)
 * **Spark** (for applications written in Scala)
 
-In this course, you'll use the **PySpark** kernel in the notebook from where you run the interactive Spark SQL query. Some of the key benefits of using the PySpark kernel are:
+In this course, you'll use the **PySpark3** kernel in the notebook from where you run the interactive Spark SQL query. Some of the key benefits of using the PySpark kernel are:
 
 * The contexts for Spark and Hive are set automatically.
 * Use cell magics, such as `%%sql`, to directly run interactive SQL or Hive queries, without any preceding code snippets.
