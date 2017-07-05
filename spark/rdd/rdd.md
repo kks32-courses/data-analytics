@@ -121,6 +121,7 @@ compute the data that we build up through transformations.
 them at any time by running an action, such as count() . This is an
 easy way to test out just part of your program.
 
+#### Persisting RDDs
 Spark’s RDDs are by default recomputed each time you run an action on
 them. If you would like to reuse an RDD in multiple actions, you can ask Spark to
 persist it using `.persist()`. After computing it the first time, Spark will
@@ -142,6 +143,33 @@ medallion.persist
 medallion.first()
 medallion.count()
 ```
+
+#### Unions
+The `filter()` operation does not mutate the existing RDD . Instead, it returns
+a pointer to an entirely new RDD. The `trips` RDD can still be reused later in the
+program—for instance, to search for another medallion. Then, we’ll use another
+transformation, `union()`, to print out the number of lines that contained
+either medallion #1 or #2.
+
+```Python
+# Create another RDD for a different medallion and count the number of trips
+medallion2 = trips.filter(lambda line: "D7D598CD99978BD012A87A76A7C891B7" in line)
+medallion2.count()
+```
+
+Transformations `union()` is a bit different than `filter()`, as it operates on
+two RDDs instead of one. Transformations can actually operate on any number of
+input RDDs.
+
+```Python
+# Union operation combining data of medallion 1 and 2
+medallions = medallion.union(medallion2)
+medallions.count()
+```
+As we derive new RDDs from each other using transformations, Spark keeps
+track of the set of dependencies between different RDDs, called the lineage graph. It
+uses this information to compute each RDD on demand and to recover lost data if
+part of a persistent RDD is lost.
 
 ## Summary
 To summarize, every Spark program and shell session will work as follows:
