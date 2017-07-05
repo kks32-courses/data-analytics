@@ -146,7 +146,7 @@ medallion.count()
 ## Summary
 To summarize, every Spark program and shell session will work as follows:
 1. Create some input RDDs from external data.
-2. Transform them to define new RDDs using transformations like filter() .
-3. Ask Spark to persist() any intermediate RDDs that will need to be reused.
-4. Launch actions such as count() and first() to kick off a parallel computation,
-which is then optimized and executed by Spark.
+2. Transform them to define new RDDs using transformations like `filter()`.
+3. Ask Spark to `persist()` any intermediate RDDs that will need to be reused.
+4. Launch actions such as `count()` and `first()` to kick off a parallel
+computation, which is then optimized and executed by Spark.
