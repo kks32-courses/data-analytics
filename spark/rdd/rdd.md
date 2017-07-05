@@ -171,6 +171,46 @@ track of the set of dependencies between different RDDs, called the lineage grap
 uses this information to compute each RDD on demand and to recover lost data if
 part of a persistent RDD is lost.
 
+### Passing Functions to Spark
+Most of Spark’s transformations, and some of its actions, depend on passing in
+functions that are used by Spark to compute data. For shorter functions `lambda`
+can be used.
+
+```Python
+word = rdd.filter(lambda s: "error" in s)
+def containsError(s):
+  return "error" in s
+word = rdd.filter(containsError)
+```
+
+> **Warning** Watch out for inadvertently serializing the object containing the function.
+
+When you pass a function that is the member of an object, or contains references
+to fields in an object (e.g., `self.field`), Spark sends the entire object to
+worker nodes, which can be much larger than the bit of required information.
+
+```Python
+class SearchFunctions(object):
+  def __init__(self, query):
+    self.query = query
+  def isMatch(self, s):
+    return self.query in s
+  def getMatchesFunctionReference(self, rdd):
+    # Problem: references all of "self" in "self.isMatch"
+    return rdd.filter(self.isMatch)
+```
+
+Instead, just extract the fields you need from your object into a local variable and pass
+that in:
+
+```Python
+class WordFunctions(object):
+  ...
+  def getMatchesNoReference(self, rdd):
+    # Safe: extract only the field we need into a local variable
+    query = self.query
+    return rdd.filter(lambda x: query in x)
+```
 ## Summary
 To summarize, every Spark program and shell session will work as follows:
 1. Create some input RDDs from external data.
