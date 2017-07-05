@@ -143,6 +143,10 @@ medallion.persist
 medallion.first()
 medallion.count()
 ```
+If you attempt to cache too much data to fit in memory, Spark will automatically
+evict old partitions using a Least Recently Used (LRU) cache policy. The RDDs
+will be recomputed when required, and will not break a job due to too much data
+in cache. The method `unpersist()` allows to manually remove them from the cache.
 
 #### Unions
 The `filter()` operation does not mutate the existing RDD . Instead, it returns
