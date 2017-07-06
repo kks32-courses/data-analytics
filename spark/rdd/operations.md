@@ -37,4 +37,25 @@ operates on each element, but returns an iterator with the return values.
 lines = sc.parallelize(["hello world", "hi"])
 words = lines.flatMap(lambda line: line.split(" "))
 words.first() # returns "hello"
+# Print flatmap() output
+print(words.take(words.count()))
 ```
+`flatMap()` “flattens” the iterators returned to it, so that instead of ending
+up with an RDD of lists we have an RDD of the elements in those lists.
+
+```shell
+# flatMap() components
+['hello', 'world', 'hi']
+# map() components
+[['hello', 'world'], ['hi']]
+```
+
+> Basic RDD transformations on an RDD containing {1, 2, 3, 3}
+
+| Function name | Purpose | Example | Result |
+| -- | -- | -- | -- |
+|  `map()` | Apply a function to each element in the RDD and return an RDD of the result. | `rdd.map(x => x + 1)` | `{2, 3, 4, 4}` |
+|  `flatMap()` | Apply a function to each element in the RDD and return an RDD of the contents of the iterators returned. Often used to extract words. | `rdd.flatMap(x => x.to(3))` | `{1, 2, 3, 2, 3, 3, 3}` |
+|  `filter()` | Return an RDD consisting of elements that pass the condition passed to `filter()`. | `rdd.filter(x => x != 1)` | `{2, 3, 3}` |
+|  `distinct()` | Remove duplicates. | `rdd.distinct()` | `{1, 2, 3}` |
+| `sample(withReplacement, fraction, [seed])` | Sample an RDD, with or without replacement. | `rdd.sample(false, 0.5)` | Non-deterministic |
