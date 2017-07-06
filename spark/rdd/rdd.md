@@ -222,3 +222,5 @@ To summarize, every Spark program and shell session will work as follows:
 3. Ask Spark to `persist()` any intermediate RDDs that will need to be reused.
 4. Launch actions such as `count()` and `first()` to kick off a parallel
 computation, which is then optimized and executed by Spark.
+
+> [Download Jupyter notebook of RDDs](rdd.ipynb)

@@ -88,3 +88,5 @@ up with an RDD of lists we have an RDD of the elements in those lists.
 
 Refer to [Spark v2.1.0 docs](https://spark.apache.org/docs/2.1.0/api/python/pyspark.html)
 for more RDD operators in pyspark.
+
+> [Download Jupyter notebook of RDD operations](rdd-operations.ipynb)
