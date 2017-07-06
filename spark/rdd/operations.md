@@ -59,3 +59,12 @@ up with an RDD of lists we have an RDD of the elements in those lists.
 |  `filter()` | Return an RDD consisting of elements that pass the condition passed to `filter()`. | `rdd.filter(x => x != 1)` | `{2, 3, 3}` |
 |  `distinct()` | Remove duplicates. | `rdd.distinct()` | `{1, 2, 3}` |
 | `sample(withReplacement, fraction, [seed])` | Sample an RDD, with or without replacement. | `rdd.sample(false, 0.5)` | Non-deterministic |
+
+> Two-RDD transformations on RDDs containing {1, 2, 3} and {3, 4, 5}
+
+| Function name | Purpose | Example | Result |
+| -- | -- | -- | -- |
+|  `union()` | Produce an RDD containing elements from both RDDs. | `rdd.union(other)` | `{1, 2, 3, 3, 4, 5}` |
+|  `intersection()` | Produce an RDD containing only elements found in both RDDs. | `rdd.intersection(other)` | `{3}` |
+|  `subtract()` | Remove the contents of one RDD (e.g., remove training data). | `rdd.subtract(other)` | `{1, 2}` |
+|  `cartesian()` | Cartesian product with the other RDD. | `rdd.cartesian(other)` | `{(1, 3), (1, 4), ... (3,5)}` |
