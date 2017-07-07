@@ -65,8 +65,8 @@ up with an RDD of lists we have an RDD of the elements in those lists.
 | Function name | Purpose | Example | Result |
 | -- | -- | -- | -- |
 |  `union()` | Produce an RDD containing elements from both RDDs. | `rdd.union(other)` | `{1, 2, 3, 3, 4, 5}` |
-|  `intersection()` | Produce an RDD containing only elements found in both RDDs. | `rdd.intersection(other|  `collect()` | Return all elements of RDD. | `rdd.collect()` | `{1, 2, 3, 3}` |
-)` | `{3}` |
+|  `intersection()` | Produce an RDD containing only elements found in both RDDs. | `rdd.intersection(other)` | `{3}` |
+|  `collect()` | Return all elements of RDD. | `rdd.collect()` | `{1, 2, 3, 3}` |
 |  `subtract()` | Remove the contents of one RDD (e.g., remove training data). | `rdd.subtract(other)` | `{1, 2}` |
 |  `cartesian()` | Cartesian product with the other RDD. | `rdd.cartesian(other)` | `{(1, 3), (1, 4), ... (3,5)}` |
 

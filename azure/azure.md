@@ -14,7 +14,7 @@ In this section, you create an HDInsight Spark cluster using an [Azure Resource 
 
 1. Click the following image to open the template in the Azure portal.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json" target="_blank"><img src="deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fkks32-courses%2Fdata-analytics%2Fmaster%2Fazure%2Fazuredeploy.json" target="_blank"><img src="deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. Enter the following values:
 
