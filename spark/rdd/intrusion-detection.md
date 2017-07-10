@@ -29,6 +29,9 @@ use `sample()` function to sample a portion of the data).
   from the entire dataset to get `attack` interactions).
 * Extract protocols (second column in the CSV) and services (third column).
 Create all possible pairs of protocols and services. (Hint: Use `cartesian`).
+* Measure the total and mean duration of `normal` and `attack` interactions.
+The state is defined in column 41, and the duration is in column 0. Use
+`aggregate` to do the same.
 
 > Hint for measuring time
 
