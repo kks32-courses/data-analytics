@@ -72,4 +72,6 @@ try to modify the above code using the filter transformation to get only the
 words that have 10 of more mentions in our output file. To do that we need to
 chain `.filter(lambda x: x[1]>=10)` after the `reduceByKey` function:
 
+<!--
 > [Solution: WordCount Jupyter notebook](word-count.ipynb)
+-->

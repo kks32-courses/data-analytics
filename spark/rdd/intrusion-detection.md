@@ -40,4 +40,6 @@ tt = time() - t0
 print ("Count completed in {} seconds".format(round(tt,3)))
 ```
 
+<!--
 > [Solution: Jupyter notebook for intrusion detection](kdd99.ipynb)
+-->
