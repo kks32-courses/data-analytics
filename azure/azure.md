@@ -67,7 +67,7 @@ The following table lists the different magics available through the kernels.
 
 > **Info** In addition to the magics added by the PySpark kernel, you can also use the [built-in IPython magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), including `%%sh`. You can use the `%%sh` magic to run scripts and block of code on the cluster headnode.
 
-*. **Auto visualization**. The **Pyspark** kernel automatically visualizes the output of Hive and SQL queries. You can choose between several different types of visualizations including Table, Pie, Line, Area, Bar.
+- **Auto visualization**. The **Pyspark** kernel automatically visualizes the output of Hive and SQL queries. You can choose between several different types of visualizations including Table, Pie, Line, Area, Bar.
 
 ## Create HDInsight Spark cluster
 
@@ -94,20 +94,6 @@ In this section, you create an HDInsight Spark cluster using an [Azure Resource 
 3. Select **I agree to the terms and conditions stated above**, select **Pin to dashboard**, and then click **Purchase**. You can see a new tile titled Submitting deployment for Template deployment. It takes about 20 minutes to create the cluster.
 
 > **Info** This article creates a Spark cluster that uses Azure Storage Blobs as the cluster storage. You can also create a Spark cluster that uses Azure Data Lake Store as additional storage, in addition to Azure Storage Blobs as the default storage.
-
-## Run an interactive Spark SQL query
-
-In this section, you use Jupyter notebook to run interactive Spark SQL queries against the Spark cluster you created earlier. HDInsight Spark clusters provide three kernels that you can use with the Jupyter notebook. These are:
-
-* **PySpark** (for applications written in Python)
-* **PySpark3** (for applications written in Python3)
-* **Spark** (for applications written in Scala)
-
-In this course, you'll use the **PySpark3** kernel in the notebook from where you run the interactive Spark SQL query. Some of the key benefits of using the PySpark kernel are:
-
-* The contexts for Spark and Hive are set automatically.
-* Use cell magics, such as `%%sql`, to directly run interactive SQL or Hive queries, without any preceding code snippets.
-* The output from the interactive queries is automatically visualized.
 
 ### Create Jupyter notebook with PySpark kernel
 

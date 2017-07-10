@@ -1,3 +1,17 @@
+## Run an interactive Spark SQL query
+
+In this section, you use Jupyter notebook to run interactive Spark SQL queries against the Spark cluster you created earlier. HDInsight Spark clusters provide three kernels that you can use with the Jupyter notebook. These are:
+
+* **PySpark** (for applications written in Python)
+* **PySpark3** (for applications written in Python3)
+* **Spark** (for applications written in Scala)
+
+In this course, you'll use the **PySpark3** kernel in the notebook from where you run the interactive Spark SQL query. Some of the key benefits of using the PySpark kernel are:
+
+* The contexts for Spark and Hive are set automatically.
+* Use cell magics, such as `%%sql`, to directly run interactive SQL or Hive queries, without any preceding code snippets.
+* The output from the interactive queries is automatically visualized.
+
 ### Azure HDInsight parameters supported with the %%sql magic
 The `%%sql` magic supports different parameters that you can use to control the kind of output that you receive when you run queries. The following table lists the output.
 
