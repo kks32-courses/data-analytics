@@ -6,3 +6,4 @@
     * [Common RDD operations](spark/rdd/operations.md)
     * [Exercise: Compute Pi](spark/rdd/pi.md)
     * [Exercise: Word count](spark/rdd/word-count.md)
+    * [Exercise: Intrusion detection](spark/rdd/intrusion-detection.md)

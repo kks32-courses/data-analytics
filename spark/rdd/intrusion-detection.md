@@ -22,4 +22,17 @@ blob storage.
 * Filter and count only the `normal` interactions and measure how long the
 computation takes.
 * Sample the data to measure the percentage of normal interaction and compare it
-with the whole data. Measure the duration of computation in both cases.
+with the whole data. Measure the duration of computation in both cases. (Hint:
+  use `sample()` function to sample a portion of the data)
+
+> Hint for measuring time
+
+```Python
+from time import time
+t0 = time()
+# computation
+tt = time() - t0
+print ("Count completed in {} seconds".format(round(tt,3)))
+```
+
+> [Solution: Jupyter notebook for intrusion detection](kdd99.ipynb)

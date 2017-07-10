@@ -43,27 +43,27 @@ def removePunctuation(text):
 ## Solution
 ![word-count workflow](word-count.png)
 
-First, the `flatMap()` function takes the input file that is returned by the
+* First, the `flatMap()` function takes the input file that is returned by the
 SparkContext function that returns the lines of the file. This `flatMap` does
 two things it applies the lambda function to each line, creating a list of
 space separated words. Then the second thing flatMap does by default is
 flattening the list of lists, meaning that `[[w1,w2],[w2,w3]]` becomes
 `[w1,w2,w2,w3]`.
 
-Second, a `map()` function is applied to the resulting RDD that is produced by
+* Second, a `map()` function is applied to the resulting RDD that is produced by
 `flatMap`. The map operation applies the lambda function provided to each
 element in the RDD. Here each element is a word in the list of words RDD and
 the map produces a pair for each word composed of the word as the key and the
 initial count as of that word as 1.
 
-Finally, the aggregation is performed with the `reduceByKey` function on the
+* Finally, the aggregation is performed with the `reduceByKey` function on the
 resulting RDD. This is similar to the regular reduce operation that takes two
 elements and applies a function to those two elements, but in this case the
 words are first grouped by key, which in the case of (w1,1) is the word part
 of the pair. This gives the following:
 `[(w1,1),(w1,1),(w2,1)] ==> [(w1,2),(w2,1)]`.
 
-Following that we collect the output and print it as words with their counts.
+* Following that we collect the output and print it as words with their counts.
 
 ### Solution for Challenge
 
