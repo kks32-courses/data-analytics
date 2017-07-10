@@ -36,6 +36,9 @@ The state is defined in column 41, and the duration is in column 0. Use
 its duration and the counts by the type.
 * Using `combineByKey` evaluate the average duration per-type.
 
+
+> [Exercise: Intrusion detection Jupyter notebook](kdd99-exercise.ipynb)
+
 > Hint for measuring time
 
 ```Python

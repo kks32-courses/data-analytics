@@ -37,6 +37,8 @@ def removePunctuation(text):
     return re.sub(r'[^a-z0-9\s]','',text.lower().strip())
 ```
 
+> [Exercise: WordCount Jupyter notebook](word-count-exercise.ipynb)
+
 ## Challenge
 * Print only those words thar are mentioned more than 10 times.
 

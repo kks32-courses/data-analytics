@@ -13,6 +13,8 @@ the circle.
 
 * Pi is `4.0 * count / n`
 
+> [Exercise: Compute Pi Jupyter notebook](pi-exercise.ipynb)
+
 <!--
 > [Solution for Pi Jupyter notebooks](pi.ipynb)
 -->
