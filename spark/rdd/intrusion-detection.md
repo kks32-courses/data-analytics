@@ -24,7 +24,11 @@ blob storage.
 computation takes.
 * Sample the data to measure the percentage of normal interaction and compare it
 with the whole data. Measure the duration of computation in both cases. (Hint:
-  use `sample()` function to sample a portion of the data)
+use `sample()` function to sample a portion of the data).
+* Count the number of attack interactions. (Hint: `subtract` normal interactions
+  from the entire dataset to get `attack` interactions).
+* Extract protocols (second column in the CSV) and services (third column).
+Create all possible pairs of protocols and services. (Hint: Use `cartesian`).
 
 > Hint for measuring time
 
