@@ -20,7 +20,7 @@ blob storage.
 * Load the [raw data](http://kdd.ics.uci.edu/databases/kddcup99/kddcup.data_10_percent.gz)
  and count the number of records.
 * Print the first 5 lines of the raw data.
-* Filter and count only the `normal` interactions and measure how long the
+* Filter and count only the `normal.` interactions and measure how long the
 computation takes.
 * Sample the data to measure the percentage of normal interaction and compare it
 with the whole data. Measure the duration of computation in both cases. (Hint:
@@ -32,6 +32,9 @@ Create all possible pairs of protocols and services. (Hint: Use `cartesian`).
 * Measure the total and mean duration of `normal` and `attack` interactions.
 The state is defined in column 41, and the duration is in column 0. Use
 `aggregate` to do the same.
+* Profile each network interaction type (hint: tag is `x[41]`) in terms of
+its duration and the counts by the type.
+* Using `combineByKey` evaluate the average duration per-type.
 
 > Hint for measuring time
 
