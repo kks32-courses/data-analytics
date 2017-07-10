@@ -108,3 +108,26 @@ count.map(lambda key, xy: (key, xy[0]/xy[1])).collectAsMap()
 
 > combineByKey workflow
 ![combineByKey](combine-by-key.png)
+
+## Data partitioning
+
+Spark’s partitioning is available on all RDDs of key/value pairs. Although Spark
+does not give explicit control of assigning specific worker nodes for each key,
+it lets the program ensure that a set of keys will appear together on some node.
+For example, you might choose to hash-partition an RDD into 100 partitions so
+that keys that have the same hash value modulo 100 appear on the same node.
+Or you might range-partition the RDD into sorted ranges of keys so that
+elements with keys in the same range appear on the same node.
+
+In Python, the number of partitions can be specified using `partitionBy()`.
+
+```Python
+rdd.partitionBy(npartitions, function)
+```
+### Challenge: Computing Pi with partitions
+
+```Python
+count = sc.parallelize(range(1, n + 1), partitions).map(f).reduce(add)
+```
+
+> [Download Jupyter notebook for computing Pi with partitions](pi-partition.ipynb)
