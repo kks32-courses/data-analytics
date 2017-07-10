@@ -126,8 +126,12 @@ rdd.partitionBy(npartitions, function)
 ```
 ### Challenge: Computing Pi with partitions
 
+* Compute the value of Pi with range partitioning (hint: use a large `n` like
+  10 million).
+* Vary the parition numbers and see the effect.
+
 ```Python
-count = sc.parallelize(range(1, n + 1), partitions).map(f).reduce(add)
+count = sc.parallelize(range(1, n + 1), npartitions).map(f).reduce(add)
 ```
 
 > [Download Jupyter notebook for computing Pi with partitions](pi-partition.ipynb)
