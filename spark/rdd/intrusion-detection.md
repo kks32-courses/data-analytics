@@ -17,7 +17,8 @@ blob storage.
 
 ## Challenge
 
-* Load the raw data and count the number of records.
+* Load the [raw data](http://kdd.ics.uci.edu/databases/kddcup99/kddcup.data_10_percent.gz)
+ and count the number of records.
 * Print the first 5 lines of the raw data.
 * Filter and count only the `normal` interactions and measure how long the
 computation takes.
