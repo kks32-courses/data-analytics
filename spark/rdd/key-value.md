@@ -32,9 +32,9 @@ pairs.collect()
 
 | Function name | Purpose | Example | Result |
 | -- | -- | -- | -- |
-|  `reduceByKey(func)` | Combine values with the same key. | `rdd.reduceByKey((x, y) => x + y)` | `{(1,2), (3,10)}` |
+|  `reduceByKey(func)` | Combine values with the same key. | `rdd.reduceByKey(lambda x, y: x + y)` | `{(1,2), (3,10)}` |
 |  `groupByKey()` | Group values with the same key.| `rdd.groupByKey()` | `{(1, [2]), (3, [4, 6])}` |
-|  `mapValues(func)` | Apply a function to each value of a pair RDD without changing the key. | `rdd.mapValues(x => x+1)` | `{(1, 3), (3, 5), (3, 7)}` |
+|  `mapValues(func)` | Apply a function to each value of a pair RDD without changing the key. | `rdd.mapValues(lambda x: x + 1)` | `{(1, 3), (3, 5), (3, 7)}` |
 |  `flatMapValues(func)` | Apply a function to each value of a pair RDD without changing the key. | `rdd.flatMapValues(x => (x to 5))` | `{(1, 2), (1, 3), (1, 4), (1, 5), (3, 4), (3, 5)}` |
 |  `keys()` | Return an RDD of just the keys. | `rdd.keys()` | `{1, 3, 3}` |
 |  `values()` | Return an RDD of just the values. | `rdd.values()` | `{2, 4, 6}` |
