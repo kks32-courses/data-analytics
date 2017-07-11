@@ -54,9 +54,9 @@ up with an RDD of lists we have an RDD of the elements in those lists.
 
 | Function name | Purpose | Example | Result |
 | -- | -- | -- | -- |
-|  `map()` | Apply a function to each element in the RDD and return an RDD of the result. | `rdd.map(x => x + 1)` | `{2, 3, 4, 4}` |
-|  `flatMap()` | Apply a function to each element in the RDD and return an RDD of the contents of the iterators returned. Often used to extract words. | `rdd.flatMap(x => x.to(3))` | `{1, 2, 3, 2, 3, 3, 3}` |
-|  `filter()` | Return an RDD consisting of elements that pass the condition passed to `filter()`. | `rdd.filter(x => x != 1)` | `{2, 3, 3}` |
+|  `map()` | Apply a function to each element in the RDD and return an RDD of the result. | `rdd.map(lambda x: x + 1)` | `{2, 3, 4, 4}` |
+|  `flatMap()` | Apply a function to each element in the RDD and return an RDD of the contents of the iterators returned. Often used to extract words. | `rdd.flatMap(lambda x: range(x, 4))` | `{1, 2, 3, 2, 3, 3, 3}` |
+|  `filter()` | Return an RDD consisting of elements that pass the condition passed to `filter()`. | `rdd.filter(lambda x: x != 1)` | `{2, 3, 3}` |
 |  `distinct()` | Remove duplicates. | `rdd.distinct()` | `{1, 2, 3}` |
 | `sample(withReplacement, fraction, [seed])` | Sample an RDD, with or without replacement. | `rdd.sample(False, 0.5)` | Non-deterministic |
 
@@ -81,10 +81,10 @@ up with an RDD of lists we have an RDD of the elements in those lists.
 |  `take(num)` | Return `num` elements from the RDD. | `rdd.take(2)` | `{1, 2}` |
 |  `top(num)` | Return the top num elements from the RDD. | `rdd.top(2)` | `{3, 3}` |
 |  `takeSample(withReplacement, num, [seed])` | Return num elements at random. | `rdd.takeSample(False, 1)` | Non-deterministic |
-|  `reduce(func)` | Combine the elements of the RDD together in parallel (e.g., sum ). | `rdd.reduce((x, y) => x + y)` | `9` |
-|  `fold(zero)(func)` | Same as `reduce()` but with the provided zero value. | `rdd.fold(0)((x, y) => x + y )` | `9` |
-|  `aggregate(zeroValue)(seqOp, combOp)` | Similar to reduce() but used to return a different type. | `rdd.aggregate((0, 0)) ((x, y) => (x._1 + y, x._2 + 1), (x, y) => (x._1 + y._1, x._2 + y._2))` | `(9, 4)` |
-|  `foreach(func)` | Apply the provided function to each element of the RDD. | `rdd.foreach(func)` | Nothing |
+|  `reduce(func)` | Combine the elements of the RDD together in parallel (e.g., sum ). | `rdd.reduce(add)` | `9` |
+|  `fold(zero)(func)` | Same as `reduce()` but with the provided zero value. | `rdd.fold(0)(add)` | `9` |
+|  `seqOp = (lambda x, y: (x[0] + y, x[1] + 1)) combOp = (lambda x, y: (x[0] + y[0], x[1] + y[1])) aggregate = rdd.aggregate((0, 0), seqOp, combOp)` | Similar to reduce() but used to return a different type. | `rdd.aggregate((0, 0)) ((x, y) => (x._1 + y, x._2 + 1), (x, y) => (x._1 + y._1, x._2 + y._2))` | `(9, 4)` |
+|  `foreach(func)` | Apply the provided function to each element of the RDD. | `def f(x): print(x) rdd.foreach(f)` | Nothing |
 
 Refer to [Spark v2.1.0 docs](https://spark.apache.org/docs/2.1.0/api/python/pyspark.html)
 for more RDD operators in pyspark.
