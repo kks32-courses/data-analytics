@@ -9,3 +9,5 @@
     * [Pair RDDs](spark/rdd/key-value.md)
     * [Exercise: Word count](spark/rdd/word-count.md)
     * [Exercise: Intrusion detection](spark/rdd/intrusion-detection.md)
+  * [File operations](spark/files/file-operations.md)
+  * [Spark SQL](spark/sql/sql.md)
