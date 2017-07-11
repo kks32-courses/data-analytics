@@ -60,8 +60,8 @@ reduce the execution speed.
 
 This is also inefficient since we are sending sizable amount of data over the
 network for each task. So how do we overcome this problem? By means of broadcast
-variables. If a variable is broadcasted, it will be sent to each node only once, t
-hereby reducing network traffic.
+variables. If a variable is broadcasted, it will be sent to each node only once,
+thereby reducing network traffic.
 
 Broadcast variables are read-only, broadcast value is an immutable object. Spark
 uses BitTorrent like protocol for sending the broadcast variable across the
