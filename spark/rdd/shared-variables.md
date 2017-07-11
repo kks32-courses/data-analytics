@@ -30,6 +30,17 @@ def extractLines(line):
 logfile = file.flatMap(extractLines)
 ```
 
+In these examples, we create an Accumulator[Int] called `blankLines` , and
+then add 1 to it whenever we see a blank line in the input. After evaluating the transformation, we print the value of the counter. Note that we will see the
+right count only after we run the `saveAsTextFile()` action, because the
+transformation above it, `map()`, is lazy, so the side-effect incrementing of
+the accumulator will happen only when the lazy `map()` transformation is forced
+to occur by the `saveAsTextFile()` action. Of course, it is possible to
+aggregate values from an entire RDD back to the driver program using actions
+like `reduce()`, but sometimes we need a simple way to aggregate values that,
+in the process of transforming an RDD, are generated at different scale or
+granularity than that of the RDD itself.
+
 ## Broadcasts
 
 Broadcast variables, allows the program to efficiently send a large, read-only
