@@ -12,3 +12,5 @@
     * [Shared variables](spark/rdd/shared-variables.md)
   * [File operations](spark/files/file-operations.md)
   * [Spark SQL](spark/sql/sql.md)
+  * [Data visualisation](spark/data-visualisation/viz.md)
+    * [Power BI visualisation](spark/data-visualisation/bi.md)
