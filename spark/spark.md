@@ -179,13 +179,74 @@ to the executors. Finally, SparkContext sends tasks to the executors to run.
 
 ## Spark cluster components
 
+A Spark application is launched on a set of machines using an external
+service called a cluster manager. Spark is packaged with a built-in cluster
+manager called the `Standalone cluster manager`. Spark also works with
+Hadoop YARN and Apache Mesos, two popular open source cluster managers.
+
+### The Driver
+The driver is the process where the `main()` method of your program runs. It is
+the process running the user code that creates a SparkContext, creates RDDs, and
+performs transformations and actions. When the driver runs, it performs two duties:
+`Converting a user program into tasks` and `Scheduling tasks on executors`.
+
+The Spark driver is responsible for converting a user program into units of physi‐
+cal execution called `tasks`. At a high level, all Spark programs follow the same
+structure: they create RDDs from some input, derive new RDDs from those
+using transformations, and perform actions to collect or save data. A Spark pro‐
+gram implicitly creates a logical directed acyclic graph (DAG) of operations.
+When the driver runs, it converts this logical graph into a physical execution
+plan.
+
+Given a physical execution plan, a Spark driver must coordinate the scheduling
+of individual tasks on executors. When executors are started they register them‐
+selves with the driver, so it has a complete view of the application’s executors
+at all times. Each executor represents a process capable of running tasks and
+storing RDD data. The Spark driver will look at the current set of executors and
+try to schedule each task in an appropriate location, based on data placement.
+When tasks execute, they may have a side effect of storing cached data. The
+driver also tracks the location of cached data and uses it to schedule future
+tasks that access that data.
+
+### Executors
+Spark executors are worker processes responsible for running the individual
+tasks in a given Spark job. Executors are launched once at the beginning of a
+Spark application and typically run for the entire lifetime of an application,
+though Spark applications can continue if executors fail. Executors have two
+roles: they run the tasks that make up the application and return results to the
+driver, and they provide in-memory storage for RDDs that are cached by user
+programs, through a service called the `Block Manager` that lives within
+each executor. Because RDDs are cached directly inside of executors, tasks can
+run alongside the cached data.
+
+### Cluster Manager
+Spark depends on a cluster manager to launch executors and, in certain cases,
+to launch the driver. The cluster manager is a pluggable component in Spark.
+This allows Spark to run on top of different external managers, such as YARN and
+Mesos, as well as its built-in Stand‐alone cluster manager.
+
+The primary difference between Mesos and YARN is around their design priorities
+and how they approach scheduling work. Mesos determines which resources are
+available, and it makes offers back to an application scheduler (the application
+scheduler and its executor is called a “framework”). Those offers can be
+accepted or rejected by the framework. This `two-level` scheduler allows each
+framework to decide which algorithms it wants to use for scheduling the jobs
+that it needs to run. Mesos was built to be a scalable global resource manager
+for the entire data center. On the other hand, when a job request comes into the
+YARN resource manager, YARN evaluates all the resources available, and it places
+the job. It’s the one making the decision where jobs should go; thus, it is
+modelled in a monolithic way. The creation of YARN was essential to the next
+iteration of Hadoop’s lifecycle, primarily around scaling.
+
+#### Summary
+
 * Each application gets its own executor processes, which stay up for the
 duration of the whole application and run tasks in multiple threads. This has
 the benefit of isolating applications from each other, on both the scheduling
 side (each driver schedules its own tasks) and executor side (tasks from
 different applications run in different JVMs). However, it also means that
 data cannot be shared across different Spark applications (instances of
-  SparkContext) without writing it to an external storage system.
+`SparkContext`) without writing it to an external storage system.
 
 * Spark is agnostic to the underlying cluster manager. As long as it can acquire
 executor processes, and these communicate with each other, it is relatively easy
