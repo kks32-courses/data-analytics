@@ -98,28 +98,78 @@ accumulators for the same key. When we are merging the results from each
 partition, if two or more partitions have an accumulator for the same key we
 merge the accumulators using the user-supplied `mergeCombiners()` function.
 
-```Python
-# Per-key average using combineByKey()
-count = nums.combineByKey((lambda x: (x,1)),
-                          (lambda x, y: (x[0] + y, x[1] + 1)),
-                          (lambda x, y: (x[0] + y[0], x[1] + y[1])))
-count.map(lambda key, xy: (key, xy[0]/xy[1])).collectAsMap()
-```
 
 ```Python
-data = sc.parallelize( [(0, 2.), (0, 4.), (1, 0.), (1, 10.), (1, 20.)] )
+data = sc.parallelize([(0, 2.), (0, 4.), (1, 0.), (1, 10.), (1, 20.), (1, 30)])
 
-sumCount = data.combineByKey(lambda value: (value, 1),
+# Using combineByKey to get the sum and the count of each key
+sumcount = data.combineByKey(lambda value: (value, 1),
                              lambda x, value: (x[0] + value, x[1] + 1),
                              lambda x, y: (x[0] + y[0], x[1] + y[1]))
-
-averageByKey = sumCount.map(lambda (label, (value_sum, count)): (label, value_sum / count))
-
-print averageByKey.collectAsMap()
+# Display sum and count of each key
+sumcount.collect()
 ```
+
+Create a PairRDD of `{(0, 2.), (0, 4.), (1, 0.), (1, 10.), (1, 20.), (1, 30)}`.
+Assume the `data` is partitioned into two. Partition #1 has `(0, 2.), (0, 4.),
+(1, 20.)` and Partition #2 has `(1, 0.), (1, 10.), (1, 30.)`. In this example,
+we will look only at key `1`. As `combineByKey()` goes through the elements in a
+partition 1, a key of `1` has never been encountered before and
+`createCombiner()` is called. This creates a new pair of `(value, 1)` from
+`lambda value: (value, 1)`. Similarly, lets say in Parition #2, we encounter
+`(1, 0)` and a `(value, 1)` pair is created.
+
+```shell
+`lambda value: (value, 1)`
+# Partition 1
+(1, 20) => (20, 1)
+
+# Partition 2
+(1, 0) => (0, 1)
+```
+
+Since there are no more keys of `1` in partition #1, no `mergeValue()` calls are
+executed. In partition #2, as it encounters `(1, 10)`, there is an accumulated
+value `(0, 1)`, hence, it executes `mergeValue()`: `lambda x, value: (x[0] +
+  value, x[1] + 1)`.
+
+```shell
+# mergeValue()
+# lambda x, value: (x[0] + value, x[1] + 1)
+# Partition #2
+(1, 10), (1, 30)
+# for (1, 10)
+# where, x refers to the accumulated value of (0, 1) in partition #2
+# and vale refers to 10 for a key of 1.
+# (lambda (0,1), 10: 0 + 10, 1 + 1) => (10, 2)
+
+# for (1, 30)
+# where, x refers to the accumulated value of (10, 2) in partition #2
+# and vale refers to 30 for a key of 1.
+# (lambda (10,2), 30: 10 + 30, 2 + 1) => (40, 3)
+```
+
+Finally, as the two partitions are merged using `mergeCombiners()`:
+
+```shell
+# Partition 1
+(20, 1)
+# Partition 2
+(40, 3)
+
+# mergeCombiners()
+# lambda x, y: (x[0] + y[0], x[1] + y[1])
+# lambda (20, 1), (40, 3): (20 + 40, 1 + 3)
+(60, 4)
+```
+This gives a `combineByKey()` value of `(1, (60, 4))`. A typical `combineByKey()`
+has the following syntax `.combineByKey(createCombiner(), mergeValue(), mergeCombiners)`.
 
 > combineByKey workflow
 ![combineByKey](combine-by-key.png)
+
+
+> [Download Jupyter notebook for combineByKey](combine-by-key.ipynb)
 
 ## Data partitioning
 
