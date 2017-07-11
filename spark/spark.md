@@ -69,7 +69,10 @@ data processing over multiple computing nodes.
 single-reduce), but not very efficient for cases that require multi-pass
 computations and algorithms. MapReduce requires output data be stored in a
 distributed file system at each step. Hence, this approach tends to reduce the
-computation speed due to replication and disk storage.
+computation speed due to replication and disk storage. Apache Spark lets you
+treat your input files almost like any other variable, which you cannot do in
+Hadoop MapReduce.
+
 
 Hadoop as a big data processing technology has been around since 2011 and has
 proven to be the solution of choice for processing large data sets. Hadoop is

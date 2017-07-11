@@ -1,12 +1,27 @@
 # Resilient Distributed Dataset
 The resilient distributed dataset (RDD) is an immutable, fault-tolerant
-distributed collection of objects that can be operated on in parallel. Each
-dataset in RDD is divided into logical partitions, which may be computed on
-different nodes of the cluster. RDDs can be created in two ways: by loading an
+distributed collection of objects that can be operated on in parallel.
+
+Distributed because it is distributed across cluster and Dataset because it
+holds data. RDDs are automatically distributed across the network by means of
+Partitions. Each dataset in RDD is divided into logical partitions,
+which may be computed on different nodes of the cluster.
+
+## Partitions
+RDDs are divided into smaller chunks called Partitions, and when you execute
+some action, a task is launched per partition. So it means, the more the number
+of partitions, the more the parallelism. Spark automatically decides the number
+of partitions that an RDD has to be divided into but you can also specify the
+number of partitions when creating an RDD. These partitions of an RDD is
+distributed across all the nodes in the network.
+
+![RDD partition](rdd_partition.png)
+
+## Creating a RDD
+RDDs can be created in two ways: by loading an
 external dataset, or by distributing a collection of objects (e.g., a list or
 set) in the driver program.
 
-## Creating a RDD
 The simplest way to create RDDs is to take an existing collection in your
 program and pass it to SparkContext’s parallelize() method.
 
@@ -40,7 +55,25 @@ and `first()`. Spark treats transformations and actions very differently, so
 understanding which type of operation you are performing will be important.
 If you are ever confused whether a given function is a transformation or an
 action, you can look at its return type: transformations return RDDs,
-whereas actions return some other data type.
+whereas actions return some other data type. Remember that RDDs are
+resilient/immutable. Also, the new RDD keeps a pointer to it’s parent RDD.
+
+![RDD operations](rdd_transformation.png)
+
+When you call a transformation, Spark does not execute it immediately, instead it
+creates a lineage. A lineage keeps track of what all transformations has to be
+applied on that RDD, including from where it has to read the data. For example,
+consider the below example
+
+![RDD lineage](rdd_lineage.png)
+
+```Python
+rdd = sc.textFile("spam.txt")
+filtered = rdd.filter(lambda line: "money" in line)
+filtered.count()
+```
+`sc.textFile()` and `rdd.filter()` do not get executed immediately, it will only
+get executed once you call an Action on the RDD - here `filtered.count()`
 
 ### Actions
 Actions are the operations that return a final value to the driver program or
@@ -121,16 +154,33 @@ compute the data that we build up through transformations.
 them at any time by running an action, such as count() . This is an
 easy way to test out just part of your program.
 
+#### Caching
+An RDD can be cached in memory by calling `rdd.cache()`. When an RDD is cached,
+RDD's Partitions are loaded into memory on the nodes that hold it.
+
+Caching can improve the performance of your application to a great extent. When
+an action is performed on a RDD, it executes it’s entire lineage. If we were to
+perform an action multiple times on the same RDD which has a long lineage, this
+will cause an increase in execution time. Caching stores the computed result of
+the RDD in the memory thereby eliminating the need to recompute it every time.
+You can think of caching as if it is breaking the lineage, but it does remember
+the lineage so that it can be recomputed in case of a node failure.
+
+![RDD caching](rdd_cache.png)
+
 #### Persisting RDDs
 Spark’s RDDs are by default recomputed each time you run an action on
 them. If you would like to reuse an RDD in multiple actions, you can ask Spark to
-persist it using `.persist()`. After computing it the first time, Spark will
+persist it using `rdd.persist(StorageLevel.MEMORY_AND_DISK)`.
+After computing it the first time, Spark will
 store the RDD contents in memory (partitioned across the machines in
 your cluster), and reuse them in future actions. Persisting RDDs on disk
 instead of memory is also possible. The behaviour of not persisting by default
 may again seem unusual, but it makes a lot of sense for big datasets: if you
 will not reuse the RDD, there’s no reason to waste storage space when Spark
 could instead stream through the data once and just compute the result.
+
+![RDD persist](rdd_persistence.png)
 
 In practice, you will often use persist() to load a subset of your data into memory
 and query it repeatedly. For example, if we knew that we wanted to compute multiple
@@ -147,6 +197,13 @@ If you attempt to cache too much data to fit in memory, Spark will automatically
 evict old partitions using a Least Recently Used (LRU) cache policy. The RDDs
 will be recomputed when required, and will not break a job due to too much data
 in cache. The method `unpersist()` allows to manually remove them from the cache.
+
+In fact Caching is a type of persistence with StorageLevel `-MEMORY_ONLY`. If
+`MEMORY_ONLY` is specified as the Storage Level and if there is not enough
+memory in the cluster to hold the entire RDD, then some partitions of the RDD
+cannot be stored in memory and will have to be recomputed every time it is
+needed. This can be avoided by using the `StorageLevel - MEMORY_AND_DISK` in
+which the partitions that do not fit in memory are saved to disk.
 
 #### Unions
 The `filter()` operation does not mutate the existing RDD . Instead, it returns
@@ -215,6 +272,7 @@ class WordFunctions(object):
     query = self.query
     return rdd.filter(lambda x: query in x)
 ```
+
 ## Summary
 To summarize, every Spark program and shell session will work as follows:
 1. Create some input RDDs from external data.
