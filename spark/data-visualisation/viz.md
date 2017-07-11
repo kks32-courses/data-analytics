@@ -169,8 +169,10 @@ avgTimeTakenByMinuteDF.registerTempTable('AverageTime')
 
 * You can then run the following SQL query to get all the records in the **AverageTime** table.
 
-   %%sql -o averagetime
-   SELECT * FROM AverageTime
+```
+%%sql -o averagetime
+SELECT * FROM AverageTime
+```
 
 The `%%sql` magic followed by `-o averagetime` ensures that the output of the query is persisted locally on the Jupyter server (typically the headnode of the cluster). The output is persisted as a [Pandas](http://pandas.pydata.org/) dataframe with the specified name **averagetime**.
 
@@ -197,3 +199,5 @@ You should see an output like the following:
 ![Matplotlib output](hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib output")
 
 * After you have finished running the application, you should shutdown the notebook to release the resources. To do so, from the **File** menu on the notebook, click **Close and Halt**. This will shutdown and close the notebook.
+
+> [Solution: Jupyter notebook for data visualisation](viz.ipynb)
