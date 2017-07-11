@@ -83,7 +83,7 @@ up with an RDD of lists we have an RDD of the elements in those lists.
 |  `takeSample(withReplacement, num, [seed])` | Return num elements at random. | `rdd.takeSample(False, 1)` | Non-deterministic |
 |  `reduce(func)` | Combine the elements of the RDD together in parallel (e.g., sum ). | `rdd.reduce(add)` | `9` |
 |  `fold(zero)(func)` | Same as `reduce()` but with the provided zero value. | `rdd.fold(0)(add)` | `9` |
-|  `seqOp = (lambda x, y: (x[0] + y, x[1] + 1)) combOp = (lambda x, y: (x[0] + y[0], x[1] + y[1])) aggregate = rdd.aggregate((0, 0), seqOp, combOp)` | Similar to reduce() but used to return a different type. | `rdd.aggregate((0, 0)) ((x, y) => (x._1 + y, x._2 + 1), (x, y) => (x._1 + y._1, x._2 + y._2))` | `(9, 4)` |
+|  `aggregate((0, 0), seqOp, combOp)` | Similar to reduce() but used to return a different type. | `rdd.aggregate((0, 0)) ((x, y) => (x._1 + y, x._2 + 1), (x, y) => (x._1 + y._1, x._2 + y._2))` | `(9, 4)` |
 |  `foreach(func)` | Apply the provided function to each element of the RDD. | `def f(x): print(x) rdd.foreach(f)` | Nothing |
 
 Refer to [Spark v2.1.0 docs](https://spark.apache.org/docs/2.1.0/api/python/pyspark.html)

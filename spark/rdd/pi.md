@@ -15,6 +15,4 @@ the circle.
 
 > [Exercise: Compute Pi Jupyter notebook](pi-exercise.ipynb)
 
-<!--
 > [Solution for Pi Jupyter notebooks](pi.ipynb)
--->
