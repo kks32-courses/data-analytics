@@ -258,3 +258,7 @@ print(lengthSchemaRDD.collect())
 ```
 
 > [Spark Hive Jupyter notebook for tweets](hive-tweet.ipynb)
+
+
+## Challenge
+> [Jupyter notebook for SQL intrusion detection](sql-df.ipynb)
