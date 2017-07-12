@@ -51,54 +51,6 @@ are:
 * Interactive analysis (financial trading)
 * Data integration and pipelines
 
-
-## Hadoop v Spark
-
-`Spark is not, despite the hype, a replacement for Hadoop. Nor is MapReduce
-dead.`
-
-The MapReduce algorithm involves: `Map`, which takes a set of data and converts
-it into another set of data, by breaking down individual elements into tuples (
-key/value pairs), and a `reduce` task, which takes the output from a map as an
-input and combines those data tuples into a smaller set of tuples. As the
-sequence of the name MapReduce implies, the reduce task is always performed
-after the map job. The major advantage of MapReduce is that it is easy to scale
-data processing over multiple computing nodes.
-
-`MapReduce` is effective for single-pass computations (a single-map and a
-single-reduce), but not very efficient for cases that require multi-pass
-computations and algorithms. MapReduce requires output data be stored in a
-distributed file system at each step. Hence, this approach tends to reduce the
-computation speed due to replication and disk storage. Apache Spark lets you
-treat your input files almost like any other variable, which you cannot do in
-Hadoop MapReduce.
-
-
-Hadoop as a big data processing technology has been around since 2011 and has
-proven to be the solution of choice for processing large data sets. Hadoop is
-an open-source framework that is designed to scale up from single servers to
-thousands of machines, each offering local computation and storage.
-
-Spark allows programmers to develop complex, multi-step data pipelines using
-directed acyclic graph (DAG) pattern. It also supports in-memory data sharing
-across DAGs, so that different jobs can work with the same data. Spark runs on
-top of existing Hadoop Distributed File System (HDFS) infrastructure to provide
-enhanced and additional functionality.
-
-Hadoop gives Spark many of the capabilities that broad adoption and
-use in production environments:
-
-* YARN resource manager, which is responsibile for scheduling tasks
-across available nodes in the cluster.
-* Distributed File System, which stores data when the cluster runs out of
-free memory, and which persistently stores historical data when Spark is
-not running.
-* Disaster Recovery capabilities: which enable recovery of data when individual
-nodes fail.
-* Data Security.
-* A distributed data platform
-
-
 ## Spark Ecosystem
 Apache Spark consists of Spark Core and a set of libraries. The core is the
 distributed execution engine and the Java, Scala, and Python APIs offer a
@@ -148,6 +100,62 @@ extends the Spark RDD API to create a directed graph with arbitrary properties
 attached to each vertex and edge. GraphX also provides various operators for
 manipulating graphs (e.g., `subgraph` and `mapVertices`) and a library of
 common graph algorithms (e.g., PageRank and triangle counting).
+
+
+
+## Hadoop v Spark
+
+`Spark is not, despite the hype, a replacement for Hadoop. Nor is MapReduce
+dead.`
+
+The MapReduce algorithm involves: `Map`, which takes a set of data and converts
+it into another set of data, by breaking down individual elements into tuples (
+key/value pairs), and a `reduce` task, which takes the output from a map as an
+input and combines those data tuples into a smaller set of tuples. As the
+sequence of the name MapReduce implies, the reduce task is always performed
+after the map job. The major advantage of MapReduce is that it is easy to scale
+data processing over multiple computing nodes.
+
+![MapReduce](mapreduce.png)
+
+`MapReduce` is effective for single-pass computations (a single-map and a
+single-reduce), but not very efficient for cases that require multi-pass
+computations and algorithms. MapReduce requires output data be stored in a
+distributed file system at each step. Hence, this approach tends to reduce the
+computation speed due to replication and disk storage. Apache Spark lets you
+treat your input files almost like any other variable, which you cannot do in
+Hadoop MapReduce.
+
+
+Hadoop as a big data processing technology has been around since 2011 and has
+proven to be the solution of choice for processing large data sets. Hadoop is
+an open-source framework that is designed to scale up from single servers to
+thousands of machines, each offering local computation and storage. Hadoop v1.0
+was tightly integrated to MapReduce. However, since Hadoop 2.0 has decoupled
+MapReduce and YARN (resource manager).
+
+![Hadoop](hadoop-1-2.png)
+
+Spark allows programmers to develop complex, multi-step data pipelines using
+directed acyclic graph (DAG) pattern. It also supports in-memory data sharing
+across DAGs, so that different jobs can work with the same data. Spark runs on
+top of existing Hadoop Distributed File System (HDFS) infrastructure to provide
+enhanced and additional functionality.
+
+Hadoop gives Spark many of the capabilities that broad adoption and
+use in production environments:
+
+* YARN resource manager, which is responsibile for scheduling tasks
+across available nodes in the cluster.
+* Distributed File System, which stores data when the cluster runs out of
+free memory, and which persistently stores historical data when Spark is
+not running.
+* Disaster Recovery capabilities: which enable recovery of data when individual
+nodes fail.
+* Data Security.
+* A distributed data platform
+
+![Spark on Hadoop](spark-hadoop.png)
 
 
 ## Spark Architecture
