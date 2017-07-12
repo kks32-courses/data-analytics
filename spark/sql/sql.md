@@ -257,6 +257,9 @@ lengthSchemaRDD = hiveCtx.sql("SELECT strLenPython(text) FROM tweets LIMIT 10")
 print(lengthSchemaRDD.collect())
 ```
 
+[Spark Hive Data types](https://spark.apache.org/docs/latest/sql-programming-guide.html#data-types)
+
+
 > [Spark Hive Jupyter notebook for tweets](hive-tweet.ipynb)
 
 
