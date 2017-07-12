@@ -1,1 +1,13 @@
 Apache Spark provides programmers with an application programming interface centered on a data structure called the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. It was developed in response to limitations in the MapReduce cluster computing paradigm, which forces a particular linear dataflow structure on distributed programs: MapReduce programs read input data from disk, map a function across the data, reduce the results of the map, and store reduction results on disk. Spark's RDDs function as a working set for distributed programs that offers a (deliberately) restricted form of distributed shared memory.
+
+Thanks for your interest in being a guest blogger on my site. I am grateful that you took the time to write this post and submit it. Unfortunately, I don’t think I will be able to use it.
+
+I have received scores of submissions–more than I expected. As a result, I am having to turn down many well-written posts, including yours. Sometimes this is because the topics overlap or the posts are too general for my audience. Regardless, because of my time constraints, I can’t really provide more detailed feedback.
+
+I wish you the best in your writing endeavors. If you have another post, I would be happy to consider it
+
+I would love to help you out, but I already made commitments to other (coworkers, clients, etc.) to complete their projects today. It wouldn’t be fair to them to not follow through on what I said I would do. I will be sure to fit this in as soon as possible. Thanks for your understanding.
+
+I appreciate you thinking of me, and I’m honored by the request. But unfortunately, I don’t have the time to give this my best right now. I think you would benefit from finding someone who can devote more time and energy to this project.
+
+
