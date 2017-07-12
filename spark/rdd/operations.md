@@ -90,3 +90,68 @@ Refer to [Spark v2.1.0 docs](https://spark.apache.org/docs/2.1.0/api/python/pysp
 for more RDD operators in pyspark.
 
 > [Download Jupyter notebook of RDD operations](rdd-operations.ipynb)
+
+### aggregate
+
+The aggregate action does not require the return type to be the same type as
+the RDD. Like with fold, we supply an initial zero value of the type we want
+to return. Then we provide two functions. The first one is used to combine the
+elements from our RDD with the accumulator. The second function is needed to
+merge two accumulators.
+
+```Python
+.aggregate(initial_value, combine_value_with_accumulator, combine_accumulators)
+```
+Consider an RDD of durations and we would like to compute the total duration,
+and the number of elements in the RDD (`.count()`).
+
+```Python
+# Create an RDD of durations and is paritioned into 2.
+duration = sc.parallelize([0, 0.1, 0.2, 0.4, 0.], 2)
+```
+
+In partition #1 we have `[0, 0.1, 0.2]` and partition #2 has `[0.4, 0]`. To
+compute the total duration and number of elements in duration, we can use the
+aggregate function. Alternatively, to get the total duration we could do a
+`.reduce(add)` action and the number of elements could be obtained using
+`.count()`. However, this requires iterating through the RDD twice. To obtain
+the `(sum, count)` equivalent of `(.reduce(add), .count())`, we use the
+`.aggregate()` method.
+
+The `aggregate` method would look something like this:
+```Python
+# .aggregate( inital_value, combine_element_accumulator, combine_accumulators)
+sum_count = duration.aggregate(
+    (0, 0) #initial values (sum, count),
+    (lambda acc, value: (acc[0] + value, acc[1] + 1)), # combine value with acc))
+    (lambda acc1, acc2: (acc1[0] + acc2[0], acc1[1] + acc2[1])) # combine accumulators
+)
+```
+
+In partition 1, as the aggregate function iterates through each element in the
+task, and encounters the first element `0`, the initial value of the accumulator
+is `(0, 0)` and runs the `combine value with acc` (first function) in the
+`aggregate()`:
+
+```Python
+(lambda acc, value: (acc[0] + value, acc[1] + 1)), # combine value with acc))
+# The acc is the initial value (0, 0) and value is 0 (first element)
+# (lambda (0, 0), 0: (0 + 0, 0 + 1)) => (0, 1)
+# for the second element 0.1
+# (lambda (0, 1), 0.1: (0 + 0.1, 1 + 1)) => (0.1, 2)
+# for the third element 0.2
+# (lambda (0.1, 2), 0.1: (0.1 + 0.2, 2 + 1)) => (0.3, 3)
+```
+
+Similarly in partition #2, which has `(0.4, 0)`, yields an accumulated values of
+`(sum, count)` as `(0.4, 2)`. This is followed by combine accumulators function.
+
+```Python
+(lambda acc1, acc2: (acc1[0] + acc2[0], acc1[1] + acc2[1])) # combine accumulators
+# this is equivalent to combining acc1 from partition 1 and acc2 from part 2.
+# (lambda (0.3, 3), (0.4, 2): (0.3 + 0.4, 3 + 2)) # combine accumulators => (0.7, 5)      
+```
+
+Thus the combine accumulators yield a value of `(sum, count)` as `(0.7, 5)`.
+The use `.aggregate(...)` means the RDD is iterated through only once, which
+improves the efficiency.
