@@ -261,4 +261,4 @@ print(lengthSchemaRDD.collect())
 
 
 ## Challenge
-> [Jupyter notebook for SQL intrusion detection](sql-df.ipynb)
+> [Jupyter notebook for SQL intrusion detection](sql-df-exercise.ipynb)
