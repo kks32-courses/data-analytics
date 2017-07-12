@@ -55,6 +55,22 @@ dfw.saveAsTable('hvac')
         %%sql
         SELECT * FROM hvac LIMIT 10
 
+* To run interactive query on the data, use the following code.
+
+```
+ %%sql
+ SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
+```
+Because you are using a PySpark kernel, you can now directly run an interactive SQL query on the temporary table hvac that you created by using the %%sql magic.
+
+The following tabular output is displayed by default.
+
+![Table output of interactive Spark query result](hdinsight-interactive-spark-query-result.png "Table output of interactive Spark query result")
+
+You can also see the results in other visualizations as well. For example, an area graph for the same output would look like the following.
+
+![Area graph of interactive Spark query result](hdinsight-interactive-spark-query-result-area-chart.png "Area graph of interactive Spark query result")
+
 * Shut down the notebook to release the resources. To do so, from the **File** menu on the notebook, click **Close and Halt**.
 
 ## <a name="powerbi"></a>Use Power BI for Spark data visualization
