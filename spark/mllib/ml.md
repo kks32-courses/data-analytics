@@ -217,7 +217,11 @@ can increase the threshold to drive down the number of false positives (i.e., in
 precision but decrease recall), or you can decrease the threshold to drive down the
 number of false negatives.
 
-> [Jupyter notebook for regression](regression.ipynb)
+> [Jupyter notebook for regression](regression-exercise.ipynb)
+
+<!--
+> [Jupyter notebook for regression](regression-exercise.ipynb)
+-->
 
 ### Spam classification
 
