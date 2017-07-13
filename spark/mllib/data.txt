@@ -1,0 +1,6 @@
+Apache, Spark provides programmers with an application programming interface centered on a data structure
+RDD, called the resilient distributed dataset (RDD)
+MapReduce, Hadoop platform
+YARN, Resource Manager
+MESOS, Apache Resource Manager
+
