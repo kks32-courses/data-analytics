@@ -280,6 +280,8 @@ in the tree contain a prediction (e.g., is the person likely to buy a product?).
 trees are attractive because the models are easy to inspect and because they support
 both categorical and continuous features.
 
+![Decision Tree](decision-tree.png)
+
 In MLlib, you can train trees using the `mllib.tree.DecisionTree` class, through the
 static methods trainClassifier() and trainRegressor() . Unlike in some of the
 other algorithms, the Java and Scala APIs also use static methods instead of a Deci
