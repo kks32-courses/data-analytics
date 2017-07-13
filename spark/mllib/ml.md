@@ -270,8 +270,12 @@ print ("Prediction for negative test example: %g" % model.predict(negTest))
 ```
 > [Jupyter notebook for spam](spam.ipynb)
 
-> [Jupyter notebook for NY taxi data](ny-taxi.ipynb)
+> [Jupyter notebook for NY taxi data](ny-taxi-exercise.ipynb) or [view notebook](https://nbviewer.jupyter.org/urls/kks32-courses.gitbooks.io/data-analytics/content/spark/mllib/ny-taxi-exercise.ipynb)
 
+
+<!--
+> [Solution: Jupyter notebook for NY taxi data](ny-taxi-exercise.ipynb)
+-->
 ### Decision trees and random forests
 Decision trees are a flexible model that can be used for both classification and regres‐
 sion. They represent a tree of nodes, each of which makes a binary decision based on

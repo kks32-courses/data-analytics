@@ -15,5 +15,4 @@
   * [Data visualisation](spark/data-visualisation/viz.md)
     * [Power BI visualisation](spark/data-visualisation/bi.md)
   * [Machine learning](spark/mllib/ml.md)
-    * [Vectors](spark/mllib/vectors.md)
 
