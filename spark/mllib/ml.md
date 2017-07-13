@@ -323,4 +323,8 @@ Random forests return a `WeightedEnsembleModel` that contains several trees (in 
 `weakHypotheses` field, weighted by `weakHypothesisWeights` ) and can `predict()` an
 RDD or Vector . It also includes a toDebugString to print all the trees.
 
+> [Jupyter notebook for decision tree](trees-exercise.ipynb)
+
+<!--
 > [Jupyter notebook for decision tree](trees.ipynb)
+-->
