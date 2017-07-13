@@ -43,6 +43,47 @@ sv1 = Vectors.sparse(3, [0, 2], [1.0, 3.0])
 sv2 = sps.csc_matrix((np.array([1.0, 3.0]), np.array([0, 2]), np.array([0, 2])), shape = (3, 1))
 ```
 
+## Statistics
+Basic statistics are an important part of data analysis, both in ad hoc exploration and
+understanding data for machine learning. MLlib offers several widely used statistic
+functions that work directly on RDDs, through methods in the mllib.stat.Statis
+tics class. Some commonly used ones include:
+
+### `Statistics.colStats(rdd)`
+Computes a statistical summary of an RDD of vectors, which stores the min,
+max, mean, and variance for each column in the set of vectors. This can be used
+to obtain a wide variety of statistics in one pass.
+
+### `Statistics.corr(rdd, method)`
+Computes the correlation matrix between columns in an RDD of vectors, using
+either the Pearson or Spearman correlation ( method must be one of pearson and
+spearman ).
+
+### `Statistics.corr(rdd1, rdd2, method)`
+Computes the correlation between two RDDs of floating-point values, using
+either the Pearson or Spearman correlation ( method must be one of pearson and
+spearman ).
+
+### `Statistics.chiSqTest(rdd)`
+Computes Pearson’s independence test for every feature with the label on an
+RDD of LabeledPoint objects. Returns an array of ChiSqTestResult objects that
+capture the p-value, test statistic, and degrees of freedom for each feature.
+Label and feature values must be categorical (i.e., discrete values).
+Apart from these methods, RDDs containing numeric data offer several basic
+statistics such as `mean()`, `stdev()`, and `sum()`. In addition, RDDs support
+`sample()` and `sampleByKey()` to build simple and stratified samples of data.
+
+> [Jupyter notebook for stats](statistics.ipynb)
+
+## Classification and Regression
+Classification and regression are two common forms of supervised learning, where
+algorithms attempt to predict a variable from features of objects using labeled train‐
+ing data (i.e., examples where we know the answer). The difference between them is
+the type of variable predicted: in classification, the variable is discrete (i.e., it takes on
+a finite set of values called classes); for example, classes might be spam or nonspam for
+emails, or the language in which the text is written. In regression, the variable predic‐
+ted is continuous (e.g., the height of a person given her age and weight).
+
 ## Spam classification
 
 As a quick example of MLlib, we show a very simple program for building a spam
@@ -88,3 +129,10 @@ negTest = tf.transform("Unfortunately, I won't be at the office ...".split(" "))
 print ("Prediction for positive test example: %g" % model.predict(posTest))
 print ("Prediction for negative test example: %g" % model.predict(negTest))
 ```
+> [Jupyter notebook for spam](spam.ipynb)
+
+> [Jupyter notebook for regression](regression.ipynb)
+
+> [Jupyter notebook for NY taxi data](ny-taxi.ipynb)
+
+> [Jupyter notebook for decision tree](trees.ipynb)
