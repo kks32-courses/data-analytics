@@ -69,8 +69,7 @@ where the indices are one-based and in ascending order. After loading, the featu
 ## Statistics
 Basic statistics are an important part of data analysis, both in ad hoc exploration and
 understanding data for machine learning. MLlib offers several widely used statistic
-functions that work directly on RDDs, through methods in the mllib.stat.Statis
-tics class. Some commonly used ones include:
+functions that work directly on RDDs, through methods in the `mllib.stat.Statistics` class. Some commonly used ones include:
 
 ### `Statistics.colStats(rdd)`
 Computes a statistical summary of an RDD of vectors, which stores the min,
@@ -92,15 +91,14 @@ Computes Pearson’s independence test for every feature with the label on an
 RDD of LabeledPoint objects. Returns an array of ChiSqTestResult objects that
 capture the p-value, test statistic, and degrees of freedom for each feature.
 Label and feature values must be categorical (i.e., discrete values).
+
 Apart from these methods, RDDs containing numeric data offer several basic
 statistics such as `mean()`, `stdev()`, and `sum()`. In addition, RDDs support
 `sample()` and `sampleByKey()` to build simple and stratified samples of data.
 
 > [Jupyter notebook for stats](statistics-exercise.ipynb)
 
-<!--
 > [Solution: Jupyter notebook for stats](statistics.ipynb)
--->
 
 ## Feature Extraction
 The mllib.feature package contains several classes for common feature transforma‐
