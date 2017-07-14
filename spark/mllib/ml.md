@@ -219,9 +219,7 @@ number of false negatives.
 
 > [Jupyter notebook for regression](regression-exercise.ipynb)
 
-<!--
-> [Jupyter notebook for regression](regression-exercise.ipynb)
--->
+> [Solution: Jupyter notebook for regression](regression.ipynb)
 
 ### Spam classification
 
@@ -273,9 +271,9 @@ print ("Prediction for negative test example: %g" % model.predict(negTest))
 > [Jupyter notebook for NY taxi data](ny-taxi-exercise.ipynb) or [view notebook](https://nbviewer.jupyter.org/urls/kks32-courses.gitbooks.io/data-analytics/content/spark/mllib/ny-taxi-exercise.ipynb)
 
 
-<!--
 > [Solution: Jupyter notebook for NY taxi data](ny-taxi-exercise.ipynb)
--->
+or [view solution](https://nbviewer.jupyter.org/urls/kks32-courses.gitbooks.io/data-analytics/content/spark/mllib/ny-taxi-exercise.ipynb)
+
 ### Decision trees and random forests
 Decision trees are a flexible model that can be used for both classification and regres‐
 sion. They represent a tree of nodes, each of which makes a binary decision based on
@@ -329,8 +327,6 @@ Random forests return a `WeightedEnsembleModel` that contains several trees (in 
 `weakHypotheses` field, weighted by `weakHypothesisWeights` ) and can `predict()` an
 RDD or Vector . It also includes a toDebugString to print all the trees.
 
-> [Jupyter notebook for decision tree](trees-exercise.ipynb)
+> [Jupyter notebook for decision tree](trees-exercise.ipynb) or [View notebook]( or [View notebook](https://nbviewer.jupyter.org/urls/kks32-courses.gitbooks.io/data-analytics/content/spark/mllib/trees-exercise.ipynb)
 
-<!--
-> [Jupyter notebook for decision tree](trees.ipynb)
--->
+> [Solution: Jupyter notebook for decision tree](trees.ipynb) or [View notebook](https://nbviewer.jupyter.org/urls/kks32-courses.gitbooks.io/data-analytics/content/spark/mllib/trees.ipynb))
