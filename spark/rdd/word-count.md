@@ -37,7 +37,7 @@ def removePunctuation(text):
     return re.sub(r'[^a-z0-9\s]','',text.lower().strip())
 ```
 
-> [Exercise: WordCount Jupyter notebook](word-count-exercise.ipynb)
+> [Exercise: WordCount Jupyter notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/word-count-exercise.ipynb)
 
 ## Challenge
 * Print only those words thar are mentioned more than 10 times.
@@ -74,4 +74,4 @@ try to modify the above code using the filter transformation to get only the
 words that have 10 of more mentions in our output file. To do that we need to
 chain `.filter(lambda x: x[1]>=10)` after the `reduceByKey` function:
 
-> [Solution: WordCount Jupyter notebook](word-count.ipynb)
+> [Solution: WordCount Jupyter notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/word-count.ipynb)

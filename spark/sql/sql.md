@@ -14,6 +14,8 @@ within another programming language the results will be returned as a
 Dataset/DataFrame. You can also interact with the SQL interface using the
 command-line or over JDBC/ODBC.
 
+> [Follow this section on Spark SQL with Jupyter notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/sql/sql.ipynb)
+
 # Apache Hive
 One common structured data source on Hadoop is Apache Hive. Hive can store
 tables in a variety of formats, from plain text to column-oriented formats,
@@ -193,7 +195,7 @@ results.show()
 
 [Full API of Spark SQL Dataframe](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame)
 
-> [Spark SQL Jupyter notebook](sql.ipynb)
+> [Spark SQL Jupyter notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/sql/sql.ipynb)
 
 # Using Spark SQL in Applications
 The most powerful way to use Spark SQL is inside a Spark application. This
@@ -206,6 +208,8 @@ on our SparkContext. This context provides additional functions for querying
 and interacting with Spark SQL data. Using the `HiveContext`, we can build
 `SchemaRDDs`, which represent our structure data, and operate on them with `SQL`
 or with normal RDD operations like `map()`.
+
+> [Follow Spark Hive with Jupyter notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/sql/hive-tweet.ipynb)
 
 Load [sample twitter data](tweet.json)
 
@@ -260,10 +264,10 @@ print(lengthSchemaRDD.collect())
 [Spark Hive Data types](https://spark.apache.org/docs/latest/sql-programming-guide.html#data-types)
 
 
-> [Spark Hive Jupyter notebook for tweets](hive-tweet.ipynb)
+> [Spark Hive Jupyter notebook for tweets](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/sql/hive-tweet.ipynb)
 
 
 ## Challenge
-> [Jupyter notebook for SQL intrusion detection](sql-df-exercise.ipynb)
+> [Jupyter notebook for SQL intrusion detection](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/sql/sql-df-exercise.ipynb)
 
-> [Solution: Jupyter notebook for SQL intrusion detection](sql-df.ipynb)
+> [Solution: Jupyter notebook for SQL intrusion detection](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/sql/sql-df.ipynb)

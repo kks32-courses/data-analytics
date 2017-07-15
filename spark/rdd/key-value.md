@@ -14,6 +14,9 @@ two RDDs together by grouping elements with the same key. It is common to extrac
 fields from an RDD (representing, for instance, an event time, customer ID, or
 other identifier) and use those fields as keys in pair RDD operations.
 
+
+> [Follow this section on Jupyter notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/key-value.ipynb)
+
 Running `map()` changes a regular RDD into a pair RDD:
 
 ```Python
@@ -45,8 +48,6 @@ pairs.collect()
 > rdd = {(1, 2), (3, 4), (3, 6)} other = {(3, 9)}
 
 ![Two-pair RDDs transformations](two-pair-rdd-transformation.png)
-
-> [Download Jupyter notebook of pair RDD transformations](key-value.ipynb)
 
 Pair RDDs are also still RDDs (of tuples), and thus support the same functions
 as RDDs. For instance, we can take our pair RDD from the previous section and
@@ -97,6 +98,8 @@ new value. Since each partition is processed independently, we can have multiple
 accumulators for the same key. When we are merging the results from each
 partition, if two or more partitions have an accumulator for the same key we
 merge the accumulators using the user-supplied `mergeCombiners()` function.
+
+> [Follow this section on `combineByKey` in Jupyter notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/combine-by-key.ipynb)
 
 
 ```Python
@@ -168,9 +171,6 @@ has the following syntax `.combineByKey(createCombiner(), mergeValue(), mergeCom
 > combineByKey workflow
 ![combineByKey](combine-by-key.png)
 
-
-> [Download Jupyter notebook for combineByKey](combine-by-key.ipynb)
-
 ## Data partitioning
 
 Spark’s partitioning is available on all RDDs of key/value pairs. Although Spark
@@ -196,4 +196,4 @@ rdd.partitionBy(npartitions, function)
 count = sc.parallelize(range(1, n + 1), npartitions).map(f).reduce(add)
 ```
 
-> [Download Jupyter notebook for computing Pi with partitions](pi-partition.ipynb)
+> [Download Jupyter notebook for computing Pi with partitions](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/pi-partition.ipynb)

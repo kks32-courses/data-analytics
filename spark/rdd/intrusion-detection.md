@@ -37,7 +37,7 @@ its duration and the counts by the type.
 * Using `combineByKey` evaluate the average duration per-type.
 
 
-> [Exercise: Intrusion detection Jupyter notebook](kdd99-exercise.ipynb)
+> [Exercise: Intrusion detection Jupyter notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/kdd99-exercise.ipynb)
 
 > Hint for measuring time
 
@@ -49,4 +49,4 @@ tt = time() - t0
 print ("Count completed in {} seconds".format(round(tt,3)))
 ```
 
-> [Solution: Jupyter notebook for intrusion detection](kdd99.ipynb)
+> [Solution: Jupyter notebook for intrusion detection](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/kdd99.ipynb)

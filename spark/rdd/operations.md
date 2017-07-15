@@ -1,4 +1,7 @@
 # Common Transformations and Actions
+
+> [Follow this section on Jupyter notebook of RDD operations](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/rdd-operations.ipynb)
+
 ## Element-wise transformations
 
 ### `map()`
@@ -89,9 +92,11 @@ up with an RDD of lists we have an RDD of the elements in those lists.
 Refer to [Spark v2.1.0 docs](https://spark.apache.org/docs/2.1.0/api/python/pyspark.html)
 for more RDD operators in pyspark.
 
-> [Download Jupyter notebook of RDD operations](rdd-operations.ipynb)
 
-### aggregate
+> [Download Jupyter notebook of RDD operations](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/rdd-operations.ipynb)
+
+
+#### aggregate
 
 The aggregate action does not require the return type to be the same type as
 the RDD. Like with fold, we supply an initial zero value of the type we want

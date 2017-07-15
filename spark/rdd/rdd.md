@@ -29,6 +29,10 @@ program and pass it to SparkContext’s parallelize() method.
 You should see `SparkSession available as 'spark'.`, when you run your first
 command.
 
+
+> [Follow this section on Jupyter notebook RDDs](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/rdd.ipynb)
+
+
 Now that Spark kernel is running and is connected via Jupyter notebooks. Let's
 go ahead and create a list `num` with values ranging from 0 to 100. We can now
 create a RDD in memory using `SparkContext`
@@ -281,4 +285,5 @@ To summarize, every Spark program and shell session will work as follows:
 4. Launch actions such as `count()` and `first()` to kick off a parallel
 computation, which is then optimized and executed by Spark.
 
-> [Download Jupyter notebook of RDDs](rdd.ipynb)
+
+> [Solution: Jupyter notebook RDDs](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/rdd.ipynb)

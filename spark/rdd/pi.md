@@ -13,6 +13,6 @@ the circle.
 
 * Pi is `4.0 * count / n`
 
-> [Exercise: Compute Pi Jupyter notebook](pi-exercise.ipynb)
+> [Exercise: Compute Pi Jupyter notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/pi-exercise.ipynb)
 
-> [Solution for Pi Jupyter notebooks](pi.ipynb)
+> [Solution for Pi Jupyter notebooks](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/rdd/pi.ipynb)
