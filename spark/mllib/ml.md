@@ -96,9 +96,9 @@ Apart from these methods, RDDs containing numeric data offer several basic
 statistics such as `mean()`, `stdev()`, and `sum()`. In addition, RDDs support
 `sample()` and `sampleByKey()` to build simple and stratified samples of data.
 
-> [Jupyter notebook for stats](statistics-exercise.ipynb)
+> [Jupyter notebook for stats](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/mllib/statistics-exercise.ipynb)
 
-> [Solution: Jupyter notebook for stats](statistics.ipynb)
+> [Solution: Jupyter notebook for stats](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/mllib/statistics.ipynb)
 
 ## Feature Extraction
 The mllib.feature package contains several classes for common feature transforma‐
@@ -217,9 +217,9 @@ can increase the threshold to drive down the number of false positives (i.e., in
 precision but decrease recall), or you can decrease the threshold to drive down the
 number of false negatives.
 
-> [Jupyter notebook for regression](regression-exercise.ipynb)
+> [Jupyter notebook for regression](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/mllib/regression-exercise.ipynb)
 
-> [Solution: Jupyter notebook for regression](regression.ipynb)
+> [Solution: Jupyter notebook for regression](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/mllib/regression.ipynb)
 
 ### Spam classification
 
@@ -266,13 +266,15 @@ negTest = tf.transform("Unfortunately, I won't be at the office ...".split(" "))
 print ("Prediction for positive test example: %g" % model.predict(posTest))
 print ("Prediction for negative test example: %g" % model.predict(negTest))
 ```
-> [Jupyter notebook for spam](spam.ipynb)
+> [Jupyter notebook for spam](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/mllib/spam.ipynb)
 
-> [Jupyter notebook for NY taxi data](ny-taxi-exercise.ipynb) or [view notebook](https://nbviewer.jupyter.org/urls/kks32-courses.gitbooks.io/data-analytics/content/spark/mllib/ny-taxi-exercise.ipynb)
+### Predicting tips from NY taxi data
+
+> [Jupyter notebook for NY taxi data](ny-taxi-exercise.ipynb) or [view notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/mllib/ny-taxi-exercise.ipynb)
 
 
 > [Solution: Jupyter notebook for NY taxi data](ny-taxi-exercise.ipynb)
-or [view solution](https://nbviewer.jupyter.org/urls/kks32-courses.gitbooks.io/data-analytics/content/spark/mllib/ny-taxi-exercise.ipynb)
+or [view solution](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/mllib/ny-taxi.ipynb)
 
 ### Decision trees and random forests
 Decision trees are a flexible model that can be used for both classification and regres‐
@@ -327,6 +329,6 @@ Random forests return a `WeightedEnsembleModel` that contains several trees (in 
 `weakHypotheses` field, weighted by `weakHypothesisWeights` ) and can `predict()` an
 RDD or Vector . It also includes a toDebugString to print all the trees.
 
-> [Jupyter notebook for decision tree](trees-exercise.ipynb) or [View notebook]( or [View notebook](https://nbviewer.jupyter.org/urls/kks32-courses.gitbooks.io/data-analytics/content/spark/mllib/trees-exercise.ipynb)
+> [Jupyter notebook for decision tree](trees-exercise.ipynb) or [View notebook]( or [View notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/mllib/trees-exercise.ipynb)
 
-> [Solution: Jupyter notebook for decision tree](trees.ipynb) or [View notebook](https://nbviewer.jupyter.org/urls/kks32-courses.gitbooks.io/data-analytics/content/spark/mllib/trees.ipynb))
+> [Solution: Jupyter notebook for decision tree](trees.ipynb) or [View notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/mllib/trees.ipynb)
