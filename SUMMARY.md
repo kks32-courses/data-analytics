@@ -15,4 +15,7 @@
   * [Data visualisation](spark/data-visualisation/viz.md)
     * [Power BI visualisation](spark/data-visualisation/bi.md)
   * [Machine learning](spark/mllib/ml.md)
+    * [Statistics](spark/mllib/stats.md)
+    * [Feature extraction](spark/mllib/feature-extraction.md)
+    * [Classification & Regression](spark/mllib/classification-regression.md)
 * [References](references.md)
