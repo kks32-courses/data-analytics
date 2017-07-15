@@ -2,7 +2,7 @@
 
 In this section, we will use the Power BI tool to visualise Apache Spark.
 
-> [BI Jupyter notebook](bi.ipynb)
+> [BI Jupyter notebook](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/data-visualisation/bi.ipynb)
 
 * Create a new PySpark3 notebook attached to the Spark cluster.
 

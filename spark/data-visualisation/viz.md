@@ -2,7 +2,7 @@
 
 In this section, we will use the Matplotlib to visualise data
 
-> [Jupyter notebook for data visualisation](viz.ipynb)
+> [Jupyter notebook for data visualisation](https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/kks32-courses/data-analytics/master/spark/data-visualisation/viz.ipynb)
 
 * Create a new PySpark3 notebook attached to the Spark cluster.
 
